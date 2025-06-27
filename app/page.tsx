@@ -1,7 +1,10 @@
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import Link from "next/link"
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
+
+import leftModel from "@/assets/images/model-black-remove-no-bg.png";
+import rightModel from "@/assets/images/model-blue-no-bg.png";
 
 export default function HomePage() {
   return (
@@ -15,7 +18,7 @@ export default function HomePage() {
               <div className="w-80 h-80 bg-orange-200 rounded-full absolute -top-10 -left-10"></div>
               <div className="relative z-10 pt-8">
                 <Image
-                  src="/placeholder.svg?height=450&width=300"
+                  src={leftModel}
                   alt="Fashion model with hat"
                   width={300}
                   height={450}
@@ -29,7 +32,10 @@ export default function HomePage() {
             {/* Customer Avatars */}
             <div className="absolute bottom-0 left-8 flex -space-x-2">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-10 h-10 bg-gray-300 rounded-full border-2 border-white overflow-hidden">
+                <div
+                  key={i}
+                  className="w-10 h-10 bg-gray-300 rounded-full border-2 border-white overflow-hidden"
+                >
                   <Image
                     src="/placeholder.svg?height=40&width=40"
                     alt={`Customer ${i}`}
@@ -43,15 +49,15 @@ export default function HomePage() {
           </div>
 
           {/* Center Content */}
-          <div className="text-center py-16">
+          <div className="text-center py-28">
             <h1 className="text-6xl lg:text-7xl font-bold text-gray-800 mb-6 leading-tight">
-              COUTURE THAT
+              FASHION MEETS
               <br />
-              DEFINES YOU
+              EXCELLENCE
             </h1>
             <p className="text-gray-600 mb-8 max-w-md mx-auto">
-              Discover bespoke fashion crafted exclusively for you. Each piece tells your unique story through
-              meticulous design, premium materials, and unparalleled artistry.
+              Rooted in tradition, shaped by your vision. Custom African wear,
+              meticulously crafted for your unique identity.
             </p>
             <Link href="/services">
               <Button className="bg-teal-700 hover:bg-teal-800 text-white px-8 py-3 rounded-full font-medium">
@@ -66,7 +72,7 @@ export default function HomePage() {
               <div className="w-80 h-80 bg-orange-200 rounded-full absolute -top-10 -right-10"></div>
               <div className="relative z-10 pt-8">
                 <Image
-                  src="/placeholder.svg?height=450&width=300"
+                  src={rightModel}
                   alt="Fashion model in elegant attire"
                   width={300}
                   height={450}
@@ -104,10 +110,22 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
-              { name: "Bespoke Bridal", image: "/placeholder.svg?height=200&width=150" },
-              { name: "Custom Attire", image: "/placeholder.svg?height=200&width=150" },
-              { name: "Corporate Uniforms", image: "/placeholder.svg?height=200&width=150" },
-              { name: "Fashion Consultation", image: "/placeholder.svg?height=200&width=150" },
+              {
+                name: "Bespoke Bridal",
+                image: "/placeholder.svg?height=200&width=150",
+              },
+              {
+                name: "Custom Attire",
+                image: "/placeholder.svg?height=200&width=150",
+              },
+              {
+                name: "Corporate Uniforms",
+                image: "/placeholder.svg?height=200&width=150",
+              },
+              {
+                name: "Fashion Consultation",
+                image: "/placeholder.svg?height=200&width=150",
+              },
             ].map((service, index) => (
               <div key={index} className="text-center group cursor-pointer">
                 <div className="bg-gray-100 rounded-2xl overflow-hidden mb-4 aspect-[3/4] group-hover:shadow-lg transition-shadow">
@@ -156,7 +174,9 @@ export default function HomePage() {
                   />
                 </div>
                 <div className="absolute bottom-6 left-6 bg-white p-4 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                  <h3 className="font-bold text-gray-800 text-lg">Elegant Evening Gown</h3>
+                  <h3 className="font-bold text-gray-800 text-lg">
+                    Elegant Evening Gown
+                  </h3>
                   <p className="text-sm text-gray-600">Custom Design 2024</p>
                 </div>
               </div>
@@ -174,7 +194,8 @@ export default function HomePage() {
             <span className="text-gray-400">ANYA'S ATELIER</span>
           </h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Be the first to know about new collections, exclusive designs, and styling tips from our atelier.
+            Be the first to know about new collections, exclusive designs, and
+            styling tips from our atelier.
           </p>
           <div className="flex max-w-md mx-auto">
             <Input
@@ -189,5 +210,5 @@ export default function HomePage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
