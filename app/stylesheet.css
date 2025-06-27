@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Ravensara Sans';
+    src: url('../assets/fonts/RavensaraSansMedium.woff2') format('woff2')('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ravensara Sans';
+    src: url('../assets/fonts/RavensaraSans-Bold.woff2') format('woff2')('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ravensara Sans';
+    src: url('../assets/fonts/RavensaraSansLight.woff2') format('woff2')('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ravensara Sans';
+    src: url('../assets/fonts/RavensaraSans-Regular.woff2') format('woff2')('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

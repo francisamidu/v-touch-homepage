@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "./stylesheet.css"
 
 @layer utilities {
   .text-balance {
@@ -86,5 +87,13 @@
   }
   body {
     @apply bg-background text-foreground;
+    
   }
+  span, p, button, a {
+    font-family: "Inter", "Inter variable", sans-serif !important;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Ravensara Sans", sans-serif !important;
+  
+}
 }

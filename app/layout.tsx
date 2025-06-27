@@ -1,22 +1,26 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
+import type React from "react";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
+import "@fontsource-variable/inter";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({
+  display: "swap",
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
-  title: "Anya's Atelier - Bespoke Fashion Design",
-  description: "Creating unique, personalized garments that reflect your individual style and vision.",
-    generator: 'v0.dev'
-}
+  title: "VTouch - Fashion Meets Excellence",
+  description: "When fashion meets excellence",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -26,5 +30,5 @@ export default function RootLayout({
         <Footer />
       </body>
     </html>
-  )
+  );
 }
