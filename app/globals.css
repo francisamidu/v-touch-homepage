@@ -96,4 +96,13 @@
     font-family: "Ravensara Sans", sans-serif !important;
   
 }
+
+.outline-text {
+  color: white;                  /* Fill color */
+  -webkit-text-stroke: 2px #4B5B6B; /* Outline width and color */
+  font-weight: bold;
+  font-size: 2rem;               /* Adjust as needed */
+  letter-spacing: 2px;           /* Optional for spacing */
+  font-family: 'Ravensara Sans', Arial, sans-serif; /* Or your preferred font */
+}
 }

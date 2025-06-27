@@ -12,7 +12,13 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { IconMenu } from "@tabler/icons-react";
+import {
+  IconMenu,
+  IconPhone,
+  IconBrandInstagram,
+  IconBrandFacebook,
+  IconBrandTiktok,
+} from "@tabler/icons-react";
 import Image from "next/image";
 import logo from "@/assets/images/v-touch-logo.png";
 
@@ -32,6 +38,36 @@ export function Navigation() {
 
   return (
     <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
+      <nav className="bg-gray-800">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between px-6 py-2">
+            <div className="flex items-center space-x-4">
+              <IconPhone size={24} stroke={3} color="#fff" />
+              <span className="text-white">+251 911 111 111</span>
+            </div>
+            <div className="flex items-center space-x-4">
+              <span className="text-white">Follow us:</span>
+              <div className="flex items-center space-x-4">
+                <a
+                  href="https://www.instagram.com/anyasatelier/"
+                  target="_blank"
+                >
+                  <IconBrandInstagram size={24} stroke={3} color="#fff" />
+                </a>
+                <a
+                  href="https://www.facebook.com/anyasatelier/"
+                  target="_blank"
+                >
+                  <IconBrandFacebook size={24} stroke={3} color="#fff" />
+                </a>
+                <a href="https://www.tiktok.com/@anyasatelier" target="_blank">
+                  <IconBrandTiktok size={24} stroke={3} color="#fff" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
       <div className="flex items-center justify-between px-6 py-4">
         {/* Desktop Navigation */}
         <DropdownMenu>

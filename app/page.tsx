@@ -5,6 +5,39 @@ import Link from "next/link";
 
 import leftModel from "@/assets/images/model-black-remove-no-bg.png";
 import rightModel from "@/assets/images/model-blue-no-bg.png";
+import bridalWear from "@/assets/images/bridal-wear.webp";
+import customAttire from "@/assets/images/custom-dress.webp";
+import corporateUniforms from "@/assets/images/corporate-uniforms.webp";
+import weddingDresses from "@/assets/images/wedding-gown.webp";
+import { IconArrowUpRight } from "@tabler/icons-react";
+
+import item1 from "@/assets/images/model-grey.webp";
+import item2 from "@/assets/images/models-black.webp";
+import item3 from "@/assets/images/models-socializing.webp";
+import item4 from "@/assets/images/model-yellow.webp";
+
+const portfolioItems = [
+  {
+    image: item1,
+    title: "Grey Model",
+    description: "Description for Model 1",
+  },
+  {
+    image: item2,
+    title: "Black Models",
+    description: "Description for Model 2",
+  },
+  {
+    image: item3,
+    title: "Socializing Models",
+    description: "Description for Model 3",
+  },
+  // {
+  //   image: item4,
+  //   title: "Yellow Model",
+  //   description: "Description for Model 4",
+  // },
+];
 
 export default function HomePage() {
   return (
@@ -99,12 +132,14 @@ export default function HomePage() {
           <div className="flex items-center justify-between mb-12">
             <h2 className="text-4xl font-bold">
               <span className="text-gray-800">OUR </span>
-              <span className="text-gray-400">SERVICES</span>
+              <span className="outline-text !text-4xl">SERVICES</span>
             </h2>
-            <Link href="/services">
-              <Button className="bg-teal-700 hover:bg-teal-800 text-white px-6 py-2 rounded-full font-medium">
-                VIEW ALL
-              </Button>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-1 text-gray-600 hover:text-teal-700 font-medium transition-colors"
+            >
+              Services
+              <IconArrowUpRight size={16} stroke={2} />
             </Link>
           </div>
 
@@ -112,19 +147,19 @@ export default function HomePage() {
             {[
               {
                 name: "Bespoke Bridal",
-                image: "/placeholder.svg?height=200&width=150",
+                image: bridalWear,
               },
               {
                 name: "Custom Attire",
-                image: "/placeholder.svg?height=200&width=150",
+                image: customAttire,
               },
               {
                 name: "Corporate Uniforms",
-                image: "/placeholder.svg?height=200&width=150",
+                image: corporateUniforms,
               },
               {
-                name: "Fashion Consultation",
-                image: "/placeholder.svg?height=200&width=150",
+                name: "Wedding Dresses",
+                image: weddingDresses,
               },
             ].map((service, index) => (
               <div key={index} className="text-center group cursor-pointer">
@@ -137,9 +172,9 @@ export default function HomePage() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="font-medium text-gray-800 group-hover:text-teal-700 transition-colors">
+                <p className="font-medium text-gray-800 group-hover:text-teal-700 transition-colors">
                   {service.name}
-                </h3>
+                </p>
               </div>
             ))}
           </div>
@@ -152,22 +187,25 @@ export default function HomePage() {
           <div className="flex items-center justify-between mb-12">
             <h2 className="text-4xl font-bold">
               <span className="text-gray-800">RECENT </span>
-              <span className="text-gray-400">CREATIONS</span>
+              <span className="outline-text !text-4xl">DESIGNS</span>
             </h2>
-            <Link href="/portfolio">
-              <Button className="bg-teal-700 hover:bg-teal-800 text-white px-6 py-2 rounded-full font-medium">
-                VIEW PORTFOLIO
-              </Button>
+
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center gap-1 text-gray-600 hover:text-teal-700 font-medium transition-colors"
+            >
+              Portfolio
+              <IconArrowUpRight size={16} stroke={2} />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item, index) => (
+            {portfolioItems.map((item, index) => (
               <div key={index} className="relative group cursor-pointer">
                 <div className="bg-white rounded-2xl overflow-hidden aspect-[3/4] shadow-sm group-hover:shadow-lg transition-shadow">
                   <Image
-                    src={`/placeholder.svg?height=400&width=300`}
-                    alt={`Portfolio piece ${item}`}
+                    src={item.image}
+                    alt={item.title}
                     width={300}
                     height={400}
                     className="w-full h-full object-cover"
@@ -175,9 +213,9 @@ export default function HomePage() {
                 </div>
                 <div className="absolute bottom-6 left-6 bg-white p-4 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
                   <h3 className="font-bold text-gray-800 text-lg">
-                    Elegant Evening Gown
+                    {item.title}
                   </h3>
-                  <p className="text-sm text-gray-600">Custom Design 2024</p>
+                  <p className="text-sm text-gray-600">{item.description}</p>
                 </div>
               </div>
             ))}
