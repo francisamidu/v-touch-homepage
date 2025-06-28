@@ -1,20 +1,17 @@
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-
-import leftModel from "@/assets/images/model-black-remove-no-bg.png";
-import rightModel from "@/assets/images/model-blue-no-bg.png";
-import bridalWear from "@/assets/images/bridal-wear.webp";
-import customAttire from "@/assets/images/custom-dress.webp";
-import corporateUniforms from "@/assets/images/corporate-uniforms.webp";
-import weddingDresses from "@/assets/images/wedding-gown.webp";
 import { IconArrowUpRight } from "@tabler/icons-react";
+import HeroSection from "@/components/HeroSection";
+import ServicesPreview from "@/components/ServicesPreview";
+import PortfolioPreview from "@/components/PortfolioPreview";
+import NewsletterSection from "@/components/NewsletterSection";
 
 import item1 from "@/assets/images/model-grey.webp";
 import item2 from "@/assets/images/models-black.webp";
 import item3 from "@/assets/images/models-socializing.webp";
 import item4 from "@/assets/images/model-yellow.webp";
+import { MailWarningIcon } from "lucide-react";
 
 const portfolioItems = [
   {
@@ -41,212 +38,18 @@ const portfolioItems = [
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative px-6 py-8 overflow-hidden">
-        <div className="max-w-7xl mx-auto relative">
-          {/* Left Model with Orange Circle */}
-          <div className="absolute left-0 top-0">
-            <div className="relative">
-              <div className="w-80 h-80 bg-orange-200 rounded-full absolute -top-10 -left-10"></div>
-              <div className="relative z-10 pt-8">
-                <Image
-                  src={leftModel}
-                  alt="Fashion model with hat"
-                  width={300}
-                  height={450}
-                  className="object-cover"
-                />
-                <div className="absolute bottom-8 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium shadow-md">
-                  Bespoke
-                </div>
-              </div>
-            </div>
-            {/* Customer Avatars */}
-            <div className="absolute bottom-0 left-8 flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="w-10 h-10 bg-gray-300 rounded-full border-2 border-white overflow-hidden"
-                >
-                  <Image
-                    src="/placeholder.svg?height=40&width=40"
-                    alt={`Customer ${i}`}
-                    width={40}
-                    height={40}
-                    className="object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Center Content */}
-          <div className="text-center py-28">
-            <h1 className="text-6xl lg:text-7xl font-bold text-gray-800 mb-6 leading-tight">
-              FASHION MEETS
-              <br />
-              EXCELLENCE
-            </h1>
-            <p className="text-gray-600 mb-8 max-w-md mx-auto">
-              Rooted in tradition, shaped by your vision. Custom African wear,
-              meticulously crafted for your unique identity.
-            </p>
-            <Link href="/services">
-              <Button className="bg-teal-700 hover:bg-teal-800 text-white px-8 py-3 rounded-full font-medium">
-                START YOUR JOURNEY
-              </Button>
-            </Link>
-          </div>
-
-          {/* Right Model with Orange Circle */}
-          <div className="absolute right-0 top-0">
-            <div className="relative">
-              <div className="w-80 h-80 bg-orange-200 rounded-full absolute -top-10 -right-10"></div>
-              <div className="relative z-10 pt-8">
-                <Image
-                  src={rightModel}
-                  alt="Fashion model in elegant attire"
-                  width={300}
-                  height={450}
-                  className="object-cover"
-                />
-                <div className="absolute top-8 right-4 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom indicators */}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2">
-            <div className="w-2 h-8 bg-gray-800 rounded-full"></div>
-            <div className="w-2 h-4 bg-gray-300 rounded-full"></div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Services Preview */}
-      <section className="py-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-12">
-            <h2 className="text-4xl font-bold">
-              <span className="text-gray-800">OUR </span>
-              <span className="outline-text !text-4xl">SERVICES</span>
-            </h2>
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-1 text-gray-600 hover:text-teal-700 font-medium transition-colors"
-            >
-              Services
-              <IconArrowUpRight size={16} stroke={2} />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[
-              {
-                name: "Bespoke Bridal",
-                image: bridalWear,
-              },
-              {
-                name: "Custom Attire",
-                image: customAttire,
-              },
-              {
-                name: "Corporate Uniforms",
-                image: corporateUniforms,
-              },
-              {
-                name: "Wedding Dresses",
-                image: weddingDresses,
-              },
-            ].map((service, index) => (
-              <div key={index} className="text-center group cursor-pointer">
-                <div className="bg-gray-100 rounded-2xl overflow-hidden mb-4 aspect-[3/4] group-hover:shadow-lg transition-shadow">
-                  <Image
-                    src={service.image || "/placeholder.svg"}
-                    alt={service.name}
-                    width={150}
-                    height={200}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p className="font-medium text-gray-800 group-hover:text-teal-700 transition-colors">
-                  {service.name}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicesPreview />
 
       {/* Portfolio Preview */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-12">
-            <h2 className="text-4xl font-bold">
-              <span className="text-gray-800">RECENT </span>
-              <span className="outline-text !text-4xl">DESIGNS</span>
-            </h2>
-
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-1 text-gray-600 hover:text-teal-700 font-medium transition-colors"
-            >
-              Portfolio
-              <IconArrowUpRight size={16} stroke={2} />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {portfolioItems.map((item, index) => (
-              <div key={index} className="relative group cursor-pointer">
-                <div className="bg-white rounded-2xl overflow-hidden aspect-[3/4] shadow-sm group-hover:shadow-lg transition-shadow">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={300}
-                    height={400}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute bottom-6 left-6 bg-white p-4 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                  <h3 className="font-bold text-gray-800 text-lg">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-gray-600">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PortfolioPreview />
 
       {/* Newsletter */}
-      <section className="py-16 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl font-bold mb-8">
-            <span className="text-gray-800">STAY UPDATED WITH</span>
-            <br />
-            <span className="text-gray-400">ANYA'S ATELIER</span>
-          </h2>
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Be the first to know about new collections, exclusive designs, and
-            styling tips from our atelier.
-          </p>
-          <div className="flex max-w-md mx-auto">
-            <Input
-              type="email"
-              placeholder="Your email address"
-              className="rounded-l-full border-r-0 px-6 py-3 text-gray-600"
-            />
-            <Button className="bg-teal-700 hover:bg-teal-800 text-white px-8 py-3 rounded-r-full font-medium">
-              SUBSCRIBE
-            </Button>
-          </div>
-        </div>
-      </section>
-    </div>
+      <NewsletterSection />
+    </main>
   );
 }
