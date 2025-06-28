@@ -1,15 +1,21 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { useState } from "react"
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+
+import bridalWear from "@/assets/images/bridal-wear.webp";
+import corporateUniforms from "@/assets/images/corporate-uniforms.webp";
+import customAttire from "@/assets/images/custom-dress.webp";
+import weddingDresses from "@/assets/images/wedding-gown.webp";
+import corporateSuit from "@/assets/images/corporate-suit.webp";
 
 const portfolioItems = [
   {
     id: 1,
     title: "Ethereal Bridal Gown",
     category: "bridal",
-    image: "/placeholder.svg?height=500&width=400",
+    image: bridalWear,
     description: "Custom silk chiffon gown with hand-embroidered lace details",
     client: "Sarah & Michael's Wedding",
     materials: "Silk chiffon, French lace, pearl beading",
@@ -19,7 +25,7 @@ const portfolioItems = [
     id: 2,
     title: "Corporate Executive Suit",
     category: "corporate",
-    image: "/placeholder.svg?height=500&width=400",
+    image: corporateSuit,
     description: "Tailored power suit with modern feminine silhouette",
     client: "Tech CEO Power Wardrobe",
     materials: "Italian wool, mother-of-pearl buttons",
@@ -29,7 +35,7 @@ const portfolioItems = [
     id: 3,
     title: "Midnight Gala Dress",
     category: "evening",
-    image: "/placeholder.svg?height=500&width=400",
+    image: weddingDresses,
     description: "Dramatic evening gown with architectural draping",
     client: "Metropolitan Museum Gala",
     materials: "Silk taffeta, crystal embellishments",
@@ -37,49 +43,43 @@ const portfolioItems = [
   },
   {
     id: 4,
-    title: "Bohemian Wedding Ensemble",
-    category: "bridal",
-    image: "/placeholder.svg?height=500&width=400",
-    description: "Free-spirited bridal design with organic elements",
-    client: "Garden Wedding Celebration",
-    materials: "Organic cotton, vintage lace",
-    process: "Sustainable design approach",
-  },
-  {
-    id: 5,
     title: "Restaurant Uniform Collection",
     category: "corporate",
-    image: "/placeholder.svg?height=500&width=400",
+    image: corporateUniforms,
     description: "Elegant staff uniforms for fine dining establishment",
     client: "Michelin Star Restaurant",
     materials: "Performance fabrics, custom buttons",
     process: "Team collaboration and fitting",
   },
   {
-    id: 6,
-    title: "Avant-Garde Cocktail Dress",
-    category: "evening",
-    image: "/placeholder.svg?height=500&width=400",
+    id: 5,
+    title: "Custom Attire",
+    category: "custom",
+    image: customAttire,
     description: "Bold geometric design with innovative construction",
     client: "Fashion Forward Event",
     materials: "Structured mesh, metallic threads",
     process: "Experimental draping techniques",
   },
-]
+];
 
 const categories = [
   { id: "all", label: "All Projects" },
   { id: "bridal", label: "Bridal" },
   { id: "evening", label: "Evening Wear" },
   { id: "corporate", label: "Corporate Uniforms" },
-]
+];
 
 export default function PortfolioPage() {
-  const [activeCategory, setActiveCategory] = useState("all")
-  const [selectedItem, setSelectedItem] = useState<(typeof portfolioItems)[0] | null>(null)
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [selectedItem, setSelectedItem] = useState<
+    (typeof portfolioItems)[0] | null
+  >(null);
 
   const filteredItems =
-    activeCategory === "all" ? portfolioItems : portfolioItems.filter((item) => item.category === activeCategory)
+    activeCategory === "all"
+      ? portfolioItems
+      : portfolioItems.filter((item) => item.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-white">
@@ -87,11 +87,14 @@ export default function PortfolioPage() {
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-6xl font-bold mb-6">
-            <span className="text-gray-800">OUR</span> <span className="text-gray-400">PORTFOLIO</span>
+            <span className="text-gray-800 uppercase">Our</span>{" "}
+            <span className="text-gray-200 uppercase outline-text text-6xl">
+              Catalog
+            </span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore our diverse collection of bespoke creations, each telling a unique story through exceptional
-            craftsmanship and design.
+            Explore our diverse collection of bespoke creations, each telling a
+            unique story through exceptional craftsmanship and design.
           </p>
         </div>
       </section>
@@ -123,20 +126,31 @@ export default function PortfolioPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredItems.map((item) => (
-              <div key={item.id} className="group cursor-pointer" onClick={() => setSelectedItem(item)}>
-                <div className="bg-gray-100 rounded-2xl overflow-hidden aspect-[4/5] mb-4 group-hover:shadow-lg transition-shadow">
+              <div
+                key={item.id}
+                className="group cursor-pointer"
+                onClick={() => setSelectedItem(item)}
+              >
+                <div className="relative bg-gray-100 rounded-2xl overflow-hidden aspect-[4/5] mb-4 group-hover:shadow-lg transition-shadow">
                   <Image
                     src={item.image || "/placeholder.svg"}
                     alt={item.title}
                     width={400}
                     height={500}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex flex-col justify-center items-center p-4 text-center">
+                    <h3 className="font-bold text-white text-xl mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:translate-y-0 translate-y-4">
+                      {item.title}
+                    </h3>
+                    <Button
+                      variant="secondary"
+                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:translate-y-0 translate-y-4 delay-100"
+                    >
+                      View
+                    </Button>
+                  </div>
                 </div>
-                <h3 className="font-bold text-gray-800 text-lg mb-2 group-hover:text-teal-700 transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{item.description}</p>
               </div>
             ))}
           </div>
@@ -159,7 +173,9 @@ export default function PortfolioPage() {
               </div>
               <div className="space-y-6">
                 <div className="flex justify-between items-start">
-                  <h2 className="text-3xl font-bold text-gray-800">{selectedItem.title}</h2>
+                  <h2 className="text-3xl font-bold text-gray-800">
+                    {selectedItem.title}
+                  </h2>
                   <Button
                     onClick={() => setSelectedItem(null)}
                     variant="ghost"
@@ -169,11 +185,15 @@ export default function PortfolioPage() {
                   </Button>
                 </div>
 
-                <p className="text-gray-600 leading-relaxed">{selectedItem.description}</p>
+                <p className="text-gray-600 leading-relaxed">
+                  {selectedItem.description}
+                </p>
 
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-bold text-gray-800 mb-2">Client Project</h3>
+                    <h3 className="font-bold text-gray-800 mb-2">
+                      Client Project
+                    </h3>
                     <p className="text-gray-600">{selectedItem.client}</p>
                   </div>
 
@@ -199,5 +219,5 @@ export default function PortfolioPage() {
         </div>
       )}
     </div>
-  )
+  );
 }
