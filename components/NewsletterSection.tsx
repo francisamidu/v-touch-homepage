@@ -8,7 +8,7 @@ export default function NewsletterSection() {
         <h2 className="text-5xl font-bold mb-8">
           <span className="text-gray-800">STAY UPDATED WITH</span>
           <br />
-          <span className="text-gray-400">ANYA'S ATELIER</span>
+          <span className="text-gray-400 outline-text text-5xl">V-TOUCH</span>
         </h2>
         <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
           Be the first to know about new collections, exclusive designs, and

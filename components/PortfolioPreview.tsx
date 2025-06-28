@@ -1,6 +1,8 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { IconArrowUpRight } from "@tabler/icons-react";
+import { motion } from "motion/react";
 
 import item1 from "@/assets/images/model-grey.webp";
 import item2 from "@/assets/images/models-black.webp";
@@ -32,9 +34,21 @@ const portfolioItems = [
 
 export default function PortfolioPreview() {
   return (
-    <section className="py-16 px-6 bg-gray-50">
+    <motion.section
+      className="py-16 px-6 bg-gray-50"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7, ease: "easeInOut" }}
+    >
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between mb-12">
+        <motion.div
+          className="flex items-center justify-between mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.8 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+        >
           <h2 className="text-4xl font-bold">
             <span className="text-gray-800">RECENT </span>
             <span className="outline-text !text-4xl">DESIGNS</span>
@@ -47,11 +61,37 @@ export default function PortfolioPreview() {
             Portfolio
             <IconArrowUpRight size={16} stroke={2} />
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.18,
+              },
+            },
+          }}
+        >
           {portfolioItems.map((item, index) => (
-            <div key={index} className="relative group cursor-pointer">
+            <motion.div
+              key={index}
+              className="relative group cursor-pointer"
+              initial={{ opacity: 0, y: 30 }}
+              variants={{
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.7, ease: "easeInOut" },
+                },
+              }}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               <div className="bg-white rounded-2xl overflow-hidden aspect-[3/4] shadow-sm group-hover:shadow-lg transition-shadow">
                 <Image
                   src={item.image}
@@ -67,10 +107,10 @@ export default function PortfolioPreview() {
                 </h3>
                 <p className="text-sm text-gray-600">{item.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

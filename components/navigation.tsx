@@ -28,11 +28,9 @@ export function Navigation() {
 
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About Us" },
-    { href: "/portfolio", label: "Portfolio" },
+    { href: "/catalogue", label: "Catalogue" },
     { href: "/services", label: "Services" },
     { href: "/testimonials", label: "Testimonials" },
-    { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
   ];
 

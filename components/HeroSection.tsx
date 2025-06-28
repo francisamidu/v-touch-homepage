@@ -127,7 +127,7 @@ export default function HeroSection() {
             meticulously crafted for your unique identity.
           </p>
           <Link href="/services">
-            <Button className="bg-teal-700 hover:bg-teal-800 text-white px-8 py-3 rounded-full font-semibold text-xs">
+            <Button className="bg-teal-700 hover:bg-teal-800 text-white px-8 py-3 rounded-full">
               START YOUR JOURNEY
             </Button>
           </Link>
