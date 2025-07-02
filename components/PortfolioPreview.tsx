@@ -55,10 +55,10 @@ export default function PortfolioPreview() {
           </h2>
 
           <Link
-            href="/portfolio"
+            href="/catalog"
             className="inline-flex items-center gap-1 text-gray-600 hover:text-teal-700 font-medium transition-colors"
           >
-            Portfolio
+            Catalogue
             <IconArrowUpRight size={16} stroke={2} />
           </Link>
         </motion.div>

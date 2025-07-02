@@ -1,13 +1,17 @@
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Check, Clock, Users, Sparkles } from "lucide-react"
-import Link from "next/link"
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Check, Clock, Users, Sparkles } from "lucide-react";
+import Link from "next/link";
+import bridalWear from "@/assets/images/bridal-wear.webp";
+import customAttire from "@/assets/images/custom-dress.webp";
+import corporateUniforms from "@/assets/images/corporate-uniforms.webp";
 
 const services = [
   {
     title: "Bespoke Bridal",
-    description: "Create the wedding dress of your dreams with our comprehensive bridal design service.",
-    image: "/placeholder.svg?height=400&width=300",
+    description:
+      "Create the wedding dress of your dreams with our comprehensive bridal design service.",
+    image: bridalWear,
     timeline: "4-6 months",
     startingPrice: "$3,500",
     includes: [
@@ -18,19 +22,12 @@ const services = [
       "Hand-finished details",
       "Garment care instructions",
     ],
-    process: [
-      "Consultation & Vision Board",
-      "Sketch & Technical Drawing",
-      "Fabric Selection & Sourcing",
-      "Pattern Making & Toile",
-      "Construction & Fittings",
-      "Final Finishing & Delivery",
-    ],
   },
   {
     title: "Custom Attire",
-    description: "Personalized clothing for special occasions, everyday wear, and unique style preferences.",
-    image: "/placeholder.svg?height=400&width=300",
+    description:
+      "Personalized clothing for special occasions, everyday wear, and unique style preferences.",
+    image: customAttire,
     timeline: "6-8 weeks",
     startingPrice: "$800",
     includes: [
@@ -41,19 +38,12 @@ const services = [
       "Quality construction",
       "Styling advice",
     ],
-    process: [
-      "Style Consultation",
-      "Measurement & Design",
-      "Fabric Selection",
-      "Construction Phase",
-      "Fitting Sessions",
-      "Completion & Styling",
-    ],
   },
   {
     title: "Corporate Uniforms",
-    description: "Professional uniform design for businesses seeking to enhance their brand identity.",
-    image: "/placeholder.svg?height=400&width=300",
+    description:
+      "Professional uniform design for businesses seeking to enhance their brand identity.",
+    image: corporateUniforms,
     timeline: "8-12 weeks",
     startingPrice: "$200 per piece",
     includes: [
@@ -64,39 +54,8 @@ const services = [
       "Bulk production",
       "Staff fitting coordination",
     ],
-    process: [
-      "Brand & Needs Assessment",
-      "Design Development",
-      "Prototype Creation",
-      "Approval & Refinements",
-      "Production Planning",
-      "Delivery & Implementation",
-    ],
   },
-  {
-    title: "Fashion Consultation",
-    description: "Personal styling services and wardrobe consultation to enhance your individual style.",
-    image: "/placeholder.svg?height=400&width=300",
-    timeline: "2-4 hours",
-    startingPrice: "$150/hour",
-    includes: [
-      "Style assessment",
-      "Wardrobe audit",
-      "Personal shopping guidance",
-      "Color and style analysis",
-      "Outfit coordination tips",
-      "Shopping recommendations",
-    ],
-    process: [
-      "Initial Style Assessment",
-      "Wardrobe Evaluation",
-      "Style Direction Planning",
-      "Shopping Strategy",
-      "Outfit Coordination",
-      "Follow-up Support",
-    ],
-  },
-]
+];
 
 export default function ServicesPage() {
   return (
@@ -105,11 +64,14 @@ export default function ServicesPage() {
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-6xl font-bold mb-6">
-            <span className="text-gray-800">OUR</span> <span className="text-gray-400">SERVICES</span>
+            <span className="text-gray-800">OUR</span>{" "}
+            <span className="text-gray-400 outline-text text-6xl">
+              SERVICES
+            </span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From bespoke bridal gowns to corporate uniforms, we offer comprehensive fashion design services tailored to
-            your unique needs.
+            From bespoke bridal gowns to corporate uniforms, we offer
+            comprehensive fashion design services tailored to your unique needs.
           </p>
         </div>
       </section>
@@ -119,20 +81,41 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">
-              <span className="text-gray-800">WHY CHOOSE</span> <span className="text-gray-400">ANYA'S ATELIER</span>
+              <span className="text-gray-800">WHY CHOOSE</span>{" "}
+              <span className="text-gray-400 outline-text text-4xl">
+                V-Touch
+              </span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12">
               {[
-                { icon: Sparkles, title: "Bespoke Design", description: "Every piece is uniquely crafted for you" },
-                { icon: Users, title: "Personal Service", description: "One-on-one attention throughout the process" },
-                { icon: Check, title: "Quality Guarantee", description: "Premium materials and expert craftsmanship" },
-                { icon: Clock, title: "Timely Delivery", description: "Reliable timelines for your special occasions" },
+                {
+                  icon: Sparkles,
+                  title: "Bespoke Design",
+                  description: "Every piece is uniquely crafted for you",
+                },
+                {
+                  icon: Users,
+                  title: "Personal Service",
+                  description: "One-on-one attention throughout the process",
+                },
+                {
+                  icon: Check,
+                  title: "Quality Guarantee",
+                  description: "Premium materials and expert craftsmanship",
+                },
+                {
+                  icon: Clock,
+                  title: "Timely Delivery",
+                  description: "Reliable timelines for your special occasions",
+                },
               ].map((feature, index) => (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <feature.icon className="w-8 h-8 text-teal-700" />
                   </div>
-                  <h3 className="font-bold text-gray-800 mb-2">{feature.title}</h3>
+                  <h3 className="font-bold text-gray-800 mb-2">
+                    {feature.title}
+                  </h3>
                   <p className="text-gray-600 text-sm">{feature.description}</p>
                 </div>
               ))}
@@ -147,7 +130,9 @@ export default function ServicesPage() {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}`}
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${
+                index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
+              }`}
             >
               <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
                 <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
@@ -161,12 +146,22 @@ export default function ServicesPage() {
                 </div>
               </div>
 
-              <div className={index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}>
+              <div
+                className={
+                  index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""
+                }
+              >
                 <h2 className="text-4xl font-bold mb-6">
-                  <span className="text-gray-800">{service.title.split(" ")[0]}</span>{" "}
-                  <span className="text-gray-400">{service.title.split(" ").slice(1).join(" ")}</span>
+                  <span className="text-gray-800">
+                    {service.title.split(" ")[0]}
+                  </span>{" "}
+                  <span className="text-gray-400">
+                    {service.title.split(" ").slice(1).join(" ")}
+                  </span>
                 </h2>
-                <p className="text-gray-600 mb-8 text-lg leading-relaxed">{service.description}</p>
+                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+                  {service.description}
+                </p>
 
                 <div className="grid grid-cols-2 gap-8 mb-8">
                   <div>
@@ -177,13 +172,19 @@ export default function ServicesPage() {
                     <p className="text-gray-600">{service.timeline}</p>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-800 mb-2">Starting From</h3>
-                    <p className="text-2xl font-bold text-teal-700">{service.startingPrice}</p>
+                    <h3 className="font-bold text-gray-800 mb-2">
+                      Starting From
+                    </h3>
+                    <p className="text-2xl font-bold text-teal-700">
+                      {service.startingPrice}
+                    </p>
                   </div>
                 </div>
 
                 <div className="mb-8">
-                  <h3 className="font-bold text-gray-800 mb-4">What's Included</h3>
+                  <h3 className="font-bold text-gray-800 mb-4">
+                    What's Included
+                  </h3>
                   <ul className="space-y-2">
                     {service.includes.map((item, idx) => (
                       <li key={idx} className="flex items-start">
@@ -193,21 +194,6 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                 </div>
-
-                <div className="mb-8">
-                  <h3 className="font-bold text-gray-800 mb-4">Our Process</h3>
-                  <div className="space-y-3">
-                    {service.process.map((step, idx) => (
-                      <div key={idx} className="flex items-center">
-                        <div className="w-8 h-8 bg-teal-700 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">
-                          {idx + 1}
-                        </div>
-                        <span className="text-gray-600">{step}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
                 <Link href="/contact">
                   <Button className="bg-teal-700 hover:bg-teal-800 text-white px-8 py-3 rounded-full font-medium">
                     GET STARTED
@@ -223,10 +209,12 @@ export default function ServicesPage() {
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6">
-            <span className="text-gray-800">READY TO BEGIN</span> <span className="text-gray-400">YOUR JOURNEY?</span>
+            <span className="text-gray-800">READY TO BEGIN</span>{" "}
+            <span className="text-gray-400">YOUR JOURNEY?</span>
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Schedule a consultation to discuss your vision and learn how we can bring it to life.
+            Schedule a consultation to discuss your vision and learn how we can
+            bring it to life.
           </p>
           <Link href="/contact">
             <Button className="bg-teal-700 hover:bg-teal-800 text-white px-8 py-3 rounded-full font-medium mr-4">
@@ -244,5 +232,5 @@ export default function ServicesPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
