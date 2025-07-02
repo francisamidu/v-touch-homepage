@@ -24,13 +24,11 @@ import logo from "@/assets/images/v-touch-logo.png";
 
 export function Navigation() {
   const pathname = usePathname();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/catalog", label: "Catalog" },
     { href: "/services", label: "Services" },
-    { href: "/testimonials", label: "Testimonials" },
     { href: "/contact", label: "Contact" },
   ];
 
