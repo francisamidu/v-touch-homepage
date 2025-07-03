@@ -38,7 +38,7 @@ export default function PortfolioPreview() {
       className="py-16 px-6 bg-gray-50"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.7, ease: "easeInOut" }}
     >
       <div className="max-w-7xl mx-auto">
@@ -67,12 +67,12 @@ export default function PortfolioPreview() {
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={{
             hidden: {},
             visible: {
               transition: {
-                staggerChildren: 0.18,
+                staggerChildren: 0.15,
               },
             },
           }}
@@ -81,16 +81,16 @@ export default function PortfolioPreview() {
             <motion.div
               key={index}
               className="relative group cursor-pointer"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               variants={{
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { duration: 0.7, ease: "easeInOut" },
+                  transition: { duration: 0.5, ease: "easeOut" },
                 },
               }}
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.1 }}
             >
               <div className="bg-white rounded-2xl overflow-hidden aspect-[3/4] shadow-sm group-hover:shadow-lg transition-shadow">
                 <Image
@@ -101,7 +101,7 @@ export default function PortfolioPreview() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute bottom-6 left-6 bg-white p-4 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute bottom-6 left-6 bg-white p-4 rounded-xl shadow-lg md:opacity-0 group-hover:opacity-100 transition-opacity">
                 <h3 className="font-bold text-gray-800 text-lg">
                   {item.title}
                 </h3>

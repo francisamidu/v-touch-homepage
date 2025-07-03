@@ -1,3 +1,11 @@
+import avatar1 from "@/assets/images/avatar.svg";
+import avatar2 from "@/assets/images/avatar-1.svg";
+import avatar3 from "@/assets/images/avatar-2.svg";
+import avatar4 from "@/assets/images/avatar-3.svg";
+import avatar5 from "@/assets/images/avatar-4.svg";
+import avatar6 from "@/assets/images/avatar-6.svg";
+
+export const avatars = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6];
 export interface Testimonial {
   id: number;
   name: string;

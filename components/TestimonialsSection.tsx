@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
-import { testimonials } from "@/data/testimonials";
+import { avatars, testimonials } from "@/data/testimonials";
+import ImageComponent from "./ImageComponent";
 
 export default function TestimonialsSection() {
   const [current, setCurrent] = useState(0);
@@ -75,9 +75,11 @@ export default function TestimonialsSection() {
               `}
               aria-label={`Show testimonial from ${t.name}`}
             >
-              <Image
+              <ImageComponent
                 src={t.image}
                 alt={t.name}
+                fallbackSrc={`${avatars[idx]}`}
+                loading="lazy"
                 width={current === idx ? 64 : 48}
                 height={current === idx ? 64 : 48}
                 className={`rounded-full object-cover ${

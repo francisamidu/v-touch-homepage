@@ -7,6 +7,8 @@ import rightModel from "@/assets/images/model-blue-no-bg.png";
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence, Variants } from "motion/react";
+import ImageComponent from "./ImageComponent";
+import { avatars } from "@/data/testimonials";
 
 const userAvatars = [
   "https://randomuser.me/api/portraits/women/1.jpg",
@@ -48,7 +50,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative px-6 py-8 overflow-hidden h-full flex items-center justify-center">
+    <section className="relative px-6 py-4 md:py-8 overflow-hidden h-full flex items-center justify-center">
       <AnimatePresence>
         {loading && (
           <motion.div
@@ -75,12 +77,12 @@ export default function HeroSection() {
         )}
       </AnimatePresence>
       <div
-        className={`w-full max-w-7xl mx-auto mt-8 relative transition-opacity duration-500 ${
+        className={`w-full max-w-7xl mx-auto mt-4 md:mt-8 relative transition-opacity duration-500 ${
           loading ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >
         {/* Left Model with Orange Circle */}
-        <div className="absolute left-0 top-0 ml-8">
+        <div className="hidden md:block absolute left-0 top-0 ml-8">
           <div className="relative">
             <div className="w-80 h-80 bg-orange-200 rounded-full absolute -top-10 -left-10"></div>
             <div className="relative z-10 pt-8">
@@ -103,11 +105,13 @@ export default function HeroSection() {
                 key={index}
                 className="w-10 h-10 bg-gray-300 rounded-full border-2 border-white overflow-hidden"
               >
-                <Image
+                <ImageComponent
                   src={avatar}
                   alt={`Customer ${index}`}
+                  fallbackSrc={`${avatars[index]}`}
                   width={40}
                   height={40}
+                  loading="lazy"
                   className="object-cover !h-full"
                 />
               </div>
@@ -116,8 +120,8 @@ export default function HeroSection() {
         </div>
 
         {/* Center Content */}
-        <div className="text-center py-28">
-          <h1 className="text-6xl lg:text-7xl font-bold text-gray-800 mb-6 leading-tight">
+        <div className="text-center py-4 md:py-24">
+          <h1 className="text-5xl lg:text-7xl font-bold text-gray-800 mb-6 leading-tight">
             FASHION MEETS
             <br />
             EXCELLENCE
@@ -134,7 +138,7 @@ export default function HeroSection() {
         </div>
 
         {/* Right Model with Orange Circle */}
-        <div className="absolute right-0 top-0 mr-8">
+        <div className="hidden md:block absolute right-0 top-0 mr-8">
           <div className="relative">
             <div className="w-80 h-80 bg-orange-200 rounded-full absolute -top-10 -right-10"></div>
             <div className="relative z-10 pt-8">
@@ -153,7 +157,7 @@ export default function HeroSection() {
         </div>
 
         {/* Bottom indicators */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2 mt-8">
+        <div className="absolute -bottom-10 md:bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2 mt-8">
           <div className="w-2 h-8 bg-gray-800 rounded-full"></div>
           <div className="w-2 h-4 bg-gray-300 rounded-full"></div>
         </div>

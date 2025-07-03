@@ -37,12 +37,14 @@ export function Navigation() {
       <nav className="bg-gray-800">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between px-6 py-2">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 md:space-x-4">
               <IconPhone size={24} stroke={3} color="#fff" />
               <span className="text-white">+251 911 111 111</span>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-white">Follow us:</span>
+              <span className="text-white hidden md:inline-block">
+                Follow us:
+              </span>
               <div className="flex items-center space-x-4">
                 <a
                   href="https://www.instagram.com/anyasatelier/"
