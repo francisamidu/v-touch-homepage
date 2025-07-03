@@ -108,7 +108,7 @@ export default function HeroSection() {
                 <ImageComponent
                   src={avatar}
                   alt={`Customer ${index}`}
-                  fallbackSrc={`${avatars[index]}`}
+                  fallbackSrc={`${avatars[index]?.src}`}
                   width={40}
                   height={40}
                   loading="lazy"

@@ -78,7 +78,7 @@ export default function TestimonialsSection() {
               <ImageComponent
                 src={t.image}
                 alt={t.name}
-                fallbackSrc={`${avatars[idx]}`}
+                fallbackSrc={`${avatars[idx]?.src}`}
                 loading="lazy"
                 width={current === idx ? 64 : 48}
                 height={current === idx ? 64 : 48}
