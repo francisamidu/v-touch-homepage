@@ -3,36 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { IconArrowUpRight } from "@tabler/icons-react";
 import { motion } from "motion/react";
+import { Design } from "@/types/app";
+import PortfolioSkeleton from "./PortfolioSkeleton";
+import { useMemo } from "react";
+import { transformDesign } from "@/lib/utils";
+import { getAllDesigns } from "@/lib/api";
+import { useQuery } from "@tanstack/react-query";
 
-import item1 from "@/assets/images/model-grey.webp";
-import item2 from "@/assets/images/models-black.webp";
-import item3 from "@/assets/images/models-socializing.webp";
-// import item4 from "@/assets/images/model-yellow.webp";
-
-const portfolioItems = [
-  {
-    image: item1,
-    title: "Grey Model",
-    description: "Description for Model 1",
-  },
-  {
-    image: item2,
-    title: "Black Models",
-    description: "Description for Model 2",
-  },
-  {
-    image: item3,
-    title: "Socializing Models",
-    description: "Description for Model 3",
-  },
-  // {
-  //   image: item4,
-  //   title: "Yellow Model",
-  //   description: "Description for Model 4",
-  // },
-];
-
-export default function PortfolioPreview() {
+const PortfolioPreview = () => {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["designs"],
+    queryFn: getAllDesigns,
+    staleTime: 3600000,
+  });
+  const designs = useMemo(() => {
+    if (!data?.data) return null;
+    return data.data.map((design) => transformDesign(design));
+  }, [data]);
   return (
     <motion.section
       className="py-16 px-6 bg-gray-50"
@@ -55,7 +42,7 @@ export default function PortfolioPreview() {
           </h2>
 
           <Link
-            href="/catalog"
+            href="/designs"
             className="inline-flex items-center gap-1 text-gray-600 hover:text-teal-700 font-medium transition-colors"
           >
             Catalogue
@@ -77,40 +64,47 @@ export default function PortfolioPreview() {
             },
           }}
         >
-          {portfolioItems.map((item, index) => (
-            <motion.div
-              key={index}
-              className="relative group cursor-pointer"
-              initial={{ opacity: 0, y: 20 }}
-              variants={{
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.5, ease: "easeOut" },
-                },
-              }}
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
-              <div className="bg-white rounded-2xl overflow-hidden aspect-[3/4] shadow-sm group-hover:shadow-lg transition-shadow">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={300}
-                  height={400}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute bottom-6 left-6 bg-white p-4 rounded-xl shadow-lg md:opacity-0 group-hover:opacity-100 transition-opacity">
-                <h3 className="font-bold text-gray-800 text-lg">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-600">{item.description}</p>
-              </div>
-            </motion.div>
-          ))}
+          {!isLoading && !error && designs ? (
+            designs.map((item, index) => (
+              <Link href={`/designs/${item.slug}`} key={item.id}>
+                <motion.div
+                  key={index}
+                  className="relative group"
+                  initial={{ opacity: 0, y: 20 }}
+                  variants={{
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.5, ease: "easeOut" },
+                    },
+                  }}
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.1 }}
+                >
+                  <div className="bg-white rounded-2xl overflow-hidden aspect-[3/4] shadow-sm group-hover:shadow-lg transition-shadow">
+                    <Image
+                      src={item.images[0]}
+                      alt={item.name}
+                      width={300}
+                      height={400}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute bottom-6 left-6 bg-white p-4 rounded-xl shadow-lg md:opacity-0 group-hover:opacity-100 transition-opacity">
+                    <h3 className="font-bold text-gray-800 text-lg">
+                      {item.name}
+                    </h3>
+                    <p className="text-sm text-gray-600">{item.description}</p>
+                  </div>
+                </motion.div>
+              </Link>
+            ))
+          ) : (
+            <PortfolioSkeleton />
+          )}
         </motion.div>
       </div>
     </motion.section>
   );
-}
+};
+export default PortfolioPreview;

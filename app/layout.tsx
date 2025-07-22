@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import "@fontsource-variable/inter";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "VTouch - Fashion Meets Excellence",
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navigation />
-        <main className="min-h-screen">{children}</main>
+        <Providers>
+          <main className="min-h-screen">{children}</main>
+        </Providers>
         <Footer />
       </body>
     </html>

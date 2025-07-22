@@ -3,7 +3,7 @@ import ServicesPreview from "@/components/ServicesPreview";
 import PortfolioPreview from "@/components/PortfolioPreview";
 import TestimonialsSection from "@/components/TestimonialsSection";
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
